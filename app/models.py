@@ -8,7 +8,6 @@ class Profile(models.Model):
 
 
 class History(models.Model):
-    # pass
     STATUS_CHOICES = [
         ('success', 'Success'),
         ('failure', 'Failure'),
