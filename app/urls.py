@@ -1,10 +1,10 @@
 from django.urls import path
 from .views import *
-from .views import CreateUserView
+from .views import CreateUserView, CustomLoginView
 
 urlpatterns = [
     path('', MainMenuView.as_view(), name='main_menu'),
-    path('auth/', CustomLoginView.as_view(), name='login'),
+    path('login/', CustomLoginView.as_view(), name='login'),
     path('create_account/', CreateUserView.as_view(), name='create_account'),
     path('logout/', logout_view, name='logout'),
     path('operations/', BalanceOperationsView.as_view(), name='operations'),

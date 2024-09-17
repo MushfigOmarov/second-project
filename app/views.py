@@ -11,6 +11,7 @@ from .forms import CreateUserForm
 import requests
 from django.db.models import Sum
 from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
 
 
 
@@ -67,8 +68,6 @@ class CreateUserView(CreateView):
     def form_valid(self, form):
         return super().form_valid(form)
     
-        
-
     
     # '''
     # Finalize this class. It should create a new user.
@@ -148,32 +147,28 @@ class BalanceOperationsView(LoginRequiredMixin, View):
         try:
             amount = float(request.POST.get('amount', 0))
         except ValueError:
-            amount = 0
-        
+            messages.error(request, "Invalid amount.")
+            return redirect('balance_operations')  # Redirect back to the operations page on invalid input
+
         operation_type = request.POST.get('operation')
         user = request.user
         balance = self.getBalance(user)
-        
-        
-        
+
+        # Validate operation type
+        if operation_type not in ['withdraw', 'deposit']:
+            messages.error(request, "Invalid operation type.")
+            return redirect('balance_operations')  # Redirect back on invalid operation
+
         if operation_type == 'withdraw':
             if amount > balance:
                 status = 'failure'
                 messages.error(request, "Insufficient funds for withdrawal.")
             else:
                 status = 'success'
-                user.profile.balance -= amount
-                user.profile.save()
                 messages.success(request, "Withdrawal successful.")
         elif operation_type == 'deposit':
-                status = 'success'
-                user.profile.balance += amount
-                user.profile.save()
-                messages.success(request, "Deposit successful.")
-        else:
-            messages.error(request, "Invalid operation type.")
-            return render(request, self.template_name, context) 
-        # redirect
+            status = 'success'
+            messages.success(request, "Deposit successful.")
         
         
 

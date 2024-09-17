@@ -38,9 +38,9 @@
         </form>
             <div class="mt-3">
                 {% if amount and currency and exchanged_amount %}
-                     <p><strong>Amount:</strong> ${{ amount }}</p>
+                     <p><strong>Amount:</strong> {{ amount }}</p>
                      <p><strong>Currency:</strong> {{ currency }}</p>
-                     <p><strong>Exchanged Amount:</strong> ${{ exchanged_amount }}</p>
+                     <p><strong>Exchanged Amount:</strong> {{ exchanged_amount }}</p>
                 {% endif %}
             </div>
         <!-- 
