@@ -56,7 +56,7 @@ def getCurrencyParams():
     # example string: 'USD (1.15)'
 
     # if the server response code is not 200 you should 
-    # return the list [None, None]
+    # return the list [None, N]
     # '''
 
 
