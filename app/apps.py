@@ -6,3 +6,4 @@ class AppConfig(AppConfig):
     name = 'app'
    #comment 
    #comment 2
+   #comment 3
