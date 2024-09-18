@@ -60,6 +60,7 @@ def getCurrencyParams():
     # '''
     #comment
     #comment 2
+    #comment 3
 
 
 class CreateUserView(CreateView):
