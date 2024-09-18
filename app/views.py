@@ -59,6 +59,7 @@ def getCurrencyParams():
     # return the list [None, N]
     # '''
     #comment
+    #comment 2
 
 
 class CreateUserView(CreateView):
