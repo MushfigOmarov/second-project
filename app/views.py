@@ -58,6 +58,7 @@ def getCurrencyParams():
     # if the server response code is not 200 you should 
     # return the list [None, N]
     # '''
+    #comment
 
 
 class CreateUserView(CreateView):
